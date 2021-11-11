@@ -1,0 +1,108 @@
+﻿@model CashFlow.Models.Account
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+
+<body style="background-color: #c8761e">
+
+
+    <div class="form-horizontal">
+        </br>
+        <h1 style="text-align: center; color: #acbad0; font-family:Rockwell"><strong>Reset nova senha</strong></h1>
+        @using (Html.BeginForm("Edit", "ForgotPassword"))
+        {
+<div class="panel-body">
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Email <h11>*</h11></label>
+        <div class="col-md-5">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                <input id="Email" name="Email" class="form-control" placeholder="email@email.com" required="" type="text">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="prependedtext">Senha <h11>*</h11></label>
+        <div class="col-md-5">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input id="Password1" name="Password1" class="form-control" placeholder="Digite sua senha" required="" type="password">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="prependedtext">Confirmação Senha <h11>*</h11></label>
+        <div class="col-md-5">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input id="Password2" name="Password2" class="form-control" placeholder="Digite novamente sua senha" required="" type="password">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="Cadastrar"></label>
+        <div class="col-md-8">
+            <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
+            <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset" onclick="window.location.href = 'https://localhost:44328/Home/Index'">Cancelar</button>
+        </div>
+    </div>
+
+    <div class="col-md-2 control-label">
+        <p class="help-block" style="color: red;"><h11>*</h11> Campos Obrigatórios </p>
+    </div>
+</div>}
+    </div>
+
+</body>
+
+
+<style>
+
+
+    .H1 {
+        background-color: red;
+    }
+
+    .panel-body {
+        background-color: #acbad0;
+        margin: 100px;
+        border: inherit;
+        border-radius: 10px;
+    }
+</style>
+
+<script>
+
+
+    function formatar(mascara, documento) {
+        var i = documento.value.length;
+        var saida = mascara.substring(0, 1);
+        var texto = mascara.substring(i);
+
+        if (texto.substring(0, 1) != saida) {
+            documento.value += texto.substring(0, 1);
+        }
+
+    }
+
+    function exibe(i) {
+
+        document.getElementById(i).readOnly = true;
+    }
+
+    function desabilita(i) {
+
+        document.getElementById(i).disabled = true;
+    }
+    function habilita(i) {
+        document.getElementById(i).disabled = false;
+    }
+
+</script>

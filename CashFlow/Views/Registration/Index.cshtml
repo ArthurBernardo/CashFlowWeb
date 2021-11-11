@@ -1,0 +1,267 @@
+﻿@model CashFlow.Models.Account
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+@*<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>*@
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+
+<body style="background-color: #0264d6">
+
+    <div class="form-horizontal">
+        </br>
+        <h1 style="text-align: center; color: #acbad0; font-family:Rockwell"><strong>Cadastre-se</strong></h1>
+        @using (Html.BeginForm("CreateNewUser", "Registration"))
+        {
+
+        <div class="panel-body">
+            <div class="form-group">
+
+                <label class="col-md-2 control-label" for="Nome">Nome <h11>*</h11></label>
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="NameUser" name="NameUser" placeholder="Digite seu nome completo" class="form-control input-md" required="" type="text">
+                        </div>
+                        </div>
+                 </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="prependedtext">Email <h11>*</h11></label>
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        <input id="Email" name="Email" class="form-control" placeholder="email@email.com" required="" type="text">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="prependedtext">Senha <h11>*</h11></label>
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="Password1" name="Password1" class="form-control" placeholder="Digite sua senha" required="" type="password">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="prependedtext">Confirmação Senha <h11>*</h11></label>
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="Password2" name="Password2" class="form-control" placeholder="Digite novamente sua senha" required="" type="password">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="Nome">Nome da Empresa <h11>*</h11></label>
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <input id="Name" name="Name" placeholder="Digite o nome completo da empresa" class="form-control input-md" required="" type="text">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="Nome">CNPJ <h11>*</h11></label>
+                <div class="col-md-2">
+                    <input id="Cnpj" name="Cnpj" placeholder="Apenas números" class="form-control input-md" required="" type="text" maxlength="14" pattern="[0-9]+$">
+                </div>
+            </div>
+
+
+            <!-- Search input-->
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="CEP">CEP <h11>*</h11></label>
+                <div class="col-md-2">
+                    <input id="AddressCep" name="AddressCep" placeholder="Apenas números" class="form-control input-md" required="" type="search" maxlength="8" pattern="[0-9]+$">
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary" onclick="pesquisacep(AddressCep.value)">Pesquisar</button>
+                </div>
+            </div>
+
+            <!-- Prepended text-->
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="prependedtext">Endereço</label>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Rua</span>
+                        <input id="Address" name="Address" class="form-control" placeholder="" required="" readonly="readonly" type="text">
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">Nº <h11>*</h11></span>
+                        <input id="AddressNumber" name="AddressNumber" class="form-control" placeholder="" required="" type="text">
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">Bairro</span>
+                        <input id="AddressNeighborhood" name="AddressNeighborhood" class="form-control" placeholder="" required="" readonly="readonly" type="text">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="prependedtext"></label>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Cidade</span>
+                        <input id="AddressCity" name="AddressCity" class="form-control" placeholder="" required="" readonly="readonly" type="text">
+                    </div>
+
+                </div>
+
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">Estado</span>
+                        <input id="AddressState" name="AddressState" class="form-control" placeholder="" required="" readonly="readonly" type="text">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="Cadastrar"></label>
+                <div class="col-md-8">
+                    <button id="" name="" class="btn btn-success" type="Submit">Cadastrar</button>
+                    <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset" onclick="window.location.href = 'https://localhost:44328/Home/Index'">Cancelar</button>
+                </div>
+            </div>
+
+            <div class="col-md-2 control-label">
+                <p class="help-block" style="color: red;"><h11>*</h11> Campos Obrigatórios </p>
+            </div>
+        </div>
+
+        }
+
+    </div>
+</body>
+
+
+<style>
+    .panel-heading {
+        font-size: 150%;
+    }
+
+    .H1 {
+        background-color: red;
+    }
+
+    .panel-body {
+        background-color: #acbad0;
+        margin: 50px;
+        border: inherit;
+        border-radius: 10px;
+    }
+</style>
+
+<script>
+
+
+    function limpa_formulario_cep() {
+        //Limpa valores do formulário de cep.
+        document.getElementById('Address').value = ("");
+        document.getElementById('AddressNeighborhood').value = ("");
+        document.getElementById('AddressCity').value = ("");
+        document.getElementById('AddressState').value = ("");
+
+    }
+
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('Address').value = (conteudo.logradouro);
+            document.getElementById('AddressNeighborhood').value = (conteudo.bairro);
+            document.getElementById('AddressCity').value = (conteudo.localidade);
+            document.getElementById('AddressState').value = (conteudo.uf);
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulario_cep();
+            alert("CEP não encontrado.");
+            document.getElementById('AddressCep').value = ("");
+        }
+    }
+
+    function pesquisacep(valor) {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep !== "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if (validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('Address').value = "...";
+                document.getElementById('AddressNeighborhood').value = "...";
+                document.getElementById('AddressCity').value = "...";
+                document.getElementById('AddressState').value = "...";
+
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+
+                //Sincroniza com o callback.
+                script.src = '//viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulario_cep();
+                alert("Formato de CEP inválido.");
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulario_cep();
+        }
+    }
+
+    function formatar(mascara, documento) {
+        var i = documento.value.length;
+        var saida = mascara.substring(0, 1);
+        var texto = mascara.substring(i);
+
+        if (texto.substring(0, 1) != saida) {
+            documento.value += texto.substring(0, 1);
+        }
+
+    }
+
+    function exibe(i) {
+
+        document.getElementById(i).readOnly = true;
+    }
+
+    function desabilita(i) {
+
+        document.getElementById(i).disabled = true;
+    }
+    function habilita(i) {
+        document.getElementById(i).disabled = false;
+    }
+
+   
+
+</script>
